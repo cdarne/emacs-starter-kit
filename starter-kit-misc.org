@@ -18,16 +18,18 @@ This following loads color-theme so that it is available by default.
 #+begin_src emacs-lisp
   (add-to-list 'load-path
                (expand-file-name "color-theme"
-                                 (expand-file-name "src" dotfiles-dir)))
+                                 (expand-file-name "src"
+                                                   dotfiles-dir)))
   (require 'color-theme)
   (eval-after-load "color-theme"
     '(progn
        (color-theme-initialize)))
 #+end_src
 
+
 Once you've selected a preferred color theme it can be installed by
 adding its function to your initialization.  For example
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
   (color-theme-railscasts)
 #+end_src
 will load the =railscasts= color theme when Emacs starts.
@@ -73,9 +75,13 @@ embedding multiple major modes in a single buffer.
 Nxhtml is not installed in this version of the starter-kit by default,
 for information on installing nxhtml see [[http://www.emacswiki.org/emacs/NxhtmlMode][EmacsWiki-Nxhtml]].
 
+#+begin_src emacs-lisp
+(starter-kit-load "starter-kit-nxhtml.org")
+#+end_src
+
 ** Set browser
 Set this to whatever browser you use e.g...
-: ;; (setq browse-url-browser-function 'browse-url-firefox)
+(setq browse-url-browser-function 'browse-url-firefox)
 : ;; (setq browse-url-browser-function 'browse-default-macosx-browser)
 : ;; (setq browse-url-browser-function 'browse-default-windows-browser)
 : ;; (setq browse-url-browser-function 'browse-default-kde)
@@ -98,7 +104,7 @@ Set this to whatever browser you use e.g...
 You really don't need this; trust me.
 #+srcname: starter-kit-no-menu
 #+begin_src emacs-lisp 
-(menu-bar-mode -1)
+: ;; (menu-bar-mode -1)
 #+end_src
 
 ** Save a list of recent files visited.
@@ -130,6 +136,9 @@ ido-mode is like magic pixie dust!
   (set-default 'indent-tabs-mode nil)
   (set-default 'indicate-empty-lines t)
   (set-default 'imenu-auto-rescan t)
+  
+  (setq cua-enable-cua-keys nil)
+  (cua-mode t)
   
   (add-hook 'text-mode-hook 'turn-on-auto-fill)
   (add-hook 'text-mode-hook 'turn-on-flyspell)

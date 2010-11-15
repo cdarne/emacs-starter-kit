@@ -1,0 +1,46 @@
+#+TITLE: Starter Kit cc
+#+OPTIONS: toc:nil num:nil ^:nil
+
+This is part of the [[file:starter-kit.org][Emacs Starter Kit]].
+
+* Starter Kit cc
+
+Support for the cc mode
+
+** Customizations for all modes in CC Mode
+#+begin_src emacs-lisp
+(defun my-c-mode-common-hook ()
+  ;; activate the auto-newline and hungry-delete
+  (c-toggle-auto-hungry-state 1)
+  ;; enable subword mode (handling symbol mixing uppercases and lowercase letters eg. GtkWindow)
+  ;; (c-subword-mode 1)
+  ;; set code style options
+  (setq tab-width 4
+        ;; make sure we use spaces, not tabs
+        indent-tabs-mode nil
+        ;; set the basic offset
+        c-basic-offset 4)
+  ;; set the default style (indentation, braces, etc...)
+  (setq c-default-style '((other . "bsd")))
+  ;; no indentation for the opening braces (if, while, etc..)
+  (c-set-offset 'substatement-open 0))
+  
+
+;; add my customisation hook
+(add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
+#+end_src
+
+
+** Customizations for PHP mode
+#+begin_src emacs-lisp
+(add-hook 'php-mode-hook
+          '(lambda ()
+             (define-key php-mode-map "\C-cl" 'php-lint)))
+
+(defun php-lint ()
+  "Perform a PHP lint on the current buffer and display the result"
+  (interactive)
+  ;; Send all the buffer to the STDIN of the 'php -l' command
+  (shell-command-on-region (point-min) (point-max) "php -l")
+)
+#+end_src
