@@ -1,0 +1,15 @@
+#+TITLE: Starter Kit NXHTML
+#+OPTIONS: toc:nil num:nil ^:nil
+
+This is part of the [[file:starter-kit.org][Emacs Starter Kit]].
+
+* Starter Kit NXHTML
+
+Support for the NXHTML mode
+
+#+begin_src emacs-lisp
+(load "nxhtml/autostart.el")
+
+;; Instead of M^TAB use double TAB
+(tabkey2-mode t)
+#+end_src

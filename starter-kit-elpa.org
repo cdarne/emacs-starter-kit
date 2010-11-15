@@ -21,6 +21,11 @@ The following packages should all ways be installed
 #+end_src
 
 #+begin_src emacs-lisp
+(setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
+("gnu" . "http://elpa.gnu.org/packages/")))
+#+end_src
+
+#+begin_src emacs-lisp
 (defun starter-kit-elpa-install ()
   "Install all starter-kit packages that aren't installed."
   (interactive)

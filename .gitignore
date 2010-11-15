@@ -27,8 +27,9 @@ doc
 eshell/lastdir
 eshell/history
 
-## ignore packages held in the src directory
+## ignore packages held in the src director
 src
 
 ## org stuff
 .org-id-locations
+ac-comphist.dat

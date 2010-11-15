@@ -10,3 +10,9 @@
 [submodule "src/auctex"]
 	path = src/auctex
 	url = http://github.com/eschulte/auctex.git
+[submodule "src/auto-complete"]
+	path = src/auto-complete
+	url = git://github.com/m2ym/auto-complete.git
+[submodule "src/nxhtml"]
+	path = src/nxhtml
+	url = git://github.com/emacsmirror/nxhtml.git
