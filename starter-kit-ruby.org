@@ -28,6 +28,8 @@ Support for the [[http://www.ruby-lang.org/en/][Ruby]] dynamic, open-source prog
 (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.gemspec$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Gemfile.lock$" . ruby-mode))
 #+end_src
 
 ** We never want to edit Rubinius bytecode
@@ -119,4 +121,9 @@ See [[http://rinari.rubyforge.org/][rinari.rubyforge]] for more information on r
 (setq rinari-major-modes
       (list 'mumamo-after-change-major-mode-hook 'dired-mode-hook 'ruby-mode-hook
 	    'css-mode-hook 'yaml-mode-hook 'javascript-mode-hook))
+#+end_src
+
+** RVM integration
+#+begin_src emacs-lisp
+(rvm-use-default) ;; use rvm’s default ruby for the current Emacs session
 #+end_src
