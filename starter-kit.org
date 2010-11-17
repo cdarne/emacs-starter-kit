@@ -483,6 +483,12 @@ Located in [[file:starter-kit-latex.org][starter-kit-latex]]
 (starter-kit-load "starter-kit-ide-skel.org")
 #+end_src
 
+*** Starter kit auto-complete
+
+#+begin_src emacs-lisp
+(starter-kit-load "starter-kit-auto-complete.org")
+#+end_src
+
 ** Load User/System Specific Files
 *** Settings from M-x customize
 #+srcname: m-x-customize-customizations
@@ -509,7 +515,7 @@ After we've loaded all the Starter Kit defaults, lets load the User's stuff.
       (mapc #'org-babel-load-file (directory-files user-specific-dir nil ".*org$"))))
 #+end_src
 
-
+      
 * FAQ
   :PROPERTIES:
   :tangle:   no
