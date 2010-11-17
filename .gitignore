@@ -28,7 +28,7 @@ eshell/lastdir
 eshell/history
 
 ## ignore packages held in the src director
-#src
+src
 
 ## org stuff
 .org-id-locations
