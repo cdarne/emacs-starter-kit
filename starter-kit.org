@@ -477,6 +477,12 @@ Located in [[file:starter-kit-latex.org][starter-kit-latex]]
 (starter-kit-load "starter-kit-cc.org")
 #+end_src
 
+*** Starter kit ide-skel
+
+#+begin_src emacs-lisp
+(starter-kit-load "starter-kit-ide-skel.org")
+#+end_src
+
 ** Load User/System Specific Files
 *** Settings from M-x customize
 #+srcname: m-x-customize-customizations
