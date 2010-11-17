@@ -5,41 +5,42 @@ This is part of the [[file:starter-kit.org][Emacs Starter Kit]].
 
 * Starter Kit Bindings
 
-Key Bindings.
+  Key Bindings.
 
 ** You know, like Readline.
-#+begin_src emacs-lisp 
+#+begin_src emacs-lisp
 (global-set-key (kbd "C-M-h") 'backward-kill-word)
 #+end_src
 
 ** Align your code in a pretty way.
-#+begin_src emacs-lisp 
+#+begin_src emacs-lisp
 (global-set-key (kbd "C-x \\") 'align-regexp)
 #+end_src
 
 ** Completion that uses many different methods to find options.
-#+begin_src emacs-lisp 
+#+begin_src emacs-lisp
 (global-set-key (kbd "M-/") 'hippie-expand)
+(global-set-key (kbd "C-:") 'hippie-expand)
 #+end_src
 
 ** Perform general cleanup.
-#+begin_src emacs-lisp 
+#+begin_src emacs-lisp
 (global-set-key (kbd "C-c n") 'cleanup-buffer)
 #+end_src
 
 ** Turn on the menu bar for exploring new modes
-#+begin_src emacs-lisp 
+#+begin_src emacs-lisp
 (global-set-key [f1] 'menu-bar-mode)
 #+end_src
 
 ** Font size
-#+begin_src emacs-lisp 
+#+begin_src emacs-lisp
 (define-key global-map (kbd "C-+") 'text-scale-increase)
 (define-key global-map (kbd "C--") 'text-scale-decrease)
 #+end_src
 
 ** Use regex searches by default.
-#+begin_src emacs-lisp 
+#+begin_src emacs-lisp
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 (global-set-key (kbd "\C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "C-M-s") 'isearch-forward)
@@ -47,12 +48,12 @@ Key Bindings.
 #+end_src
 
 ** Jump to a definition in the current file. (This is awesome.)
-#+begin_src emacs-lisp 
+#+begin_src emacs-lisp
 (global-set-key (kbd "C-x C-i") 'ido-imenu)
 #+end_src
 
 ** File finding
-#+begin_src emacs-lisp 
+#+begin_src emacs-lisp
 (global-set-key (kbd "C-x M-f") 'ido-find-file-other-window)
 (global-set-key (kbd "C-x C-M-f") 'find-file-in-project)
 (global-set-key (kbd "C-x f") 'recentf-ido-find-file)
@@ -64,54 +65,54 @@ Key Bindings.
 #+end_src
 
 ** Window switching. (C-x o goes to the next window)
-#+begin_src emacs-lisp 
+#+begin_src emacs-lisp
 (windmove-default-keybindings 'meta) ;; Shift+direction
 (global-set-key (kbd "C-x O") (lambda () (interactive) (other-window -1))) ;; back one
 (global-set-key (kbd "C-x C-o") (lambda () (interactive) (other-window 2))) ;; forward two
 #+end_src
 
 ** Indentation help
-#+begin_src emacs-lisp 
+#+begin_src emacs-lisp
 (global-set-key (kbd "C-x ^") 'join-line)
 #+end_src
 
 ** Start eshell or switch to it if it's active.
-#+begin_src emacs-lisp 
+#+begin_src emacs-lisp
 (global-set-key (kbd "C-x m") 'eshell)
 #+end_src
 
 ** Start a new eshell even if one is active.
-#+begin_src emacs-lisp 
+#+begin_src emacs-lisp
 (global-set-key (kbd "C-x M") (lambda () (interactive) (eshell t)))
 #+end_src
 
 ** Start a regular shell if you prefer that.
-#+begin_src emacs-lisp 
+#+begin_src emacs-lisp
 (global-set-key (kbd "C-x M-m") 'shell)
 #+end_src
 
 ** If you want to be able to M-x without meta
-#+begin_src emacs-lisp 
+#+begin_src emacs-lisp
 (global-set-key (kbd "C-x C-m") 'execute-extended-command)
 #+end_src
 
 ** Fetch the contents at a URL, display it raw.
-#+begin_src emacs-lisp 
+#+begin_src emacs-lisp
 : ;; (global-set-key (kbd "C-x h") 'view-url)
 #+end_src
 
 ** Help should search more than just commands
-#+begin_src emacs-lisp 
+#+begin_src emacs-lisp
 (global-set-key (kbd "C-h a") 'apropos)
 #+end_src
 
 ** Should be able to eval-and-replace anywhere.
-#+begin_src emacs-lisp 
+#+begin_src emacs-lisp
 (global-set-key (kbd "C-c e") 'eval-and-replace)
 #+end_src
 
 ** Applications
-#+begin_src emacs-lisp 
+#+begin_src emacs-lisp
 
 (global-set-key (kbd "C-c j") (lambda () (interactive) (switch-or-start 'jabber-connect "*-jabber-*")))
 (global-set-key (kbd "C-c g") (lambda () (interactive) (switch-or-start 'gnus "*Group*")))
@@ -124,7 +125,7 @@ Key Bindings.
 #+end_src
 
 ** This is a little hacky since VC doesn't support git add internally
-#+begin_src emacs-lisp 
+#+begin_src emacs-lisp
 (eval-after-load 'vc
   (define-key vc-prefix-map "i" '(lambda () (interactive)
                                    (if (not (eq 'Git (vc-backend buffer-file-name)))
@@ -134,7 +135,7 @@ Key Bindings.
 #+end_src
 
 ** Activate occur easily inside isearch
-#+begin_src emacs-lisp 
+#+begin_src emacs-lisp
 (define-key isearch-mode-map (kbd "C-o")
   (lambda () (interactive)
     (let ((case-fold-search isearch-case-fold-search))
@@ -142,14 +143,14 @@ Key Bindings.
 #+end_src
 
 ** Closing
-#+begin_src emacs-lisp 
+#+begin_src emacs-lisp
 (provide 'starter-kit-bindings)
 ;;; starter-kit-bindings.el ends here
 #+end_src
 ** Org-mode
-Two global binding for Org-mode (see [[file:starter-kit-org.org][starter-kit-org]])
+   Two global binding for Org-mode (see [[file:starter-kit-org.org][starter-kit-org]])
 
-The [[http://orgmode.org/manual/Agenda-Views.html#Agenda-Views][Org-mode agenda]] is good to have close at hand
+   The [[http://orgmode.org/manual/Agenda-Views.html#Agenda-Views][Org-mode agenda]] is good to have close at hand
 #+begin_src emacs-lisp
 (define-key global-map "\C-ca" 'org-agenda)
 #+end_src
@@ -161,7 +162,7 @@ globally for later insertion into an Org-mode buffer.  See
 (define-key global-map "\C-cl" 'org-store-link)
 #+end_src
 ** Magit
-It's to the point now where I almost can't use git without magit.
+   It's to the point now where I almost can't use git without magit.
 - [[http://zagadka.vm.bytemark.co.uk/magit/][Homepage]]
 - [[http://zagadka.vm.bytemark.co.uk/magit/magit.html][Manual]]
 - [[http://groups.google.com/group/magit/][Mailing list]]
@@ -171,12 +172,12 @@ It's to the point now where I almost can't use git without magit.
 #+end_src
 
 #+resname:
-: magit-status
+  : magit-status
 
 ** Rgrep
-Rgrep is infinitely useful in multi-file projects.
+   Rgrep is infinitely useful in multi-file projects.
 
-(see [[elisp:(describe-function 'rgrep)]])
+   (see [[elisp:(describe-function 'rgrep)]])
 
 #+begin_src emacs-lisp
   (define-key global-map "\C-x\C-r" 'rgrep)
