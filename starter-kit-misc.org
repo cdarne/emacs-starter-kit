@@ -30,9 +30,15 @@ This following loads color-theme so that it is available by default.
 Once you've selected a preferred color theme it can be installed by
 adding its function to your initialization.  For example
 #+begin_src emacs-lisp
-  (color-theme-railscasts)
+  ;;  (color-theme-railscasts)
+  (color-theme-blackboard)
 #+end_src
 will load the =railscasts= color theme when Emacs starts.
+
+** Set default font
+#+begin_src emacs-lisp
+(set-face-attribute 'default nil :font "Monospace-10")
+#+end_src
 
 ** Window system stuff
 
